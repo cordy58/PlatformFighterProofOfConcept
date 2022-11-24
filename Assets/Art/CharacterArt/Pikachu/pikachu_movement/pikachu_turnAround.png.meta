@@ -110,10 +110,10 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 44
+        width: 43
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -129,12 +129,12 @@ TextureImporter:
       name: pikachu_turnAround_1
       rect:
         serializedVersion: 2
-        x: 44
+        x: 43
         y: 0
-        width: 44
+        width: 45
         height: 48
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

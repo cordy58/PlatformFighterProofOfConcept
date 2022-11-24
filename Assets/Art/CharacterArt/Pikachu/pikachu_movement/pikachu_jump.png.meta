@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7d1b1225b9ff22645bcec1e06f757bac
+guid: 240d10ece368b0546ab73b830a4c1361
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -105,295 +105,295 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Garchomp_idle_0
+      name: pikachu_jump_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 1
+        y: 4
+        width: 38
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 19768ef98813f214fba4a196d5ccf696
-      internalID: 679346635
+      spriteID: 575d38ad6bd24fb4c96e4361ef6f22ed
+      internalID: -1706410715
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_1
+      name: pikachu_jump_1
       rect:
         serializedVersion: 2
-        x: 51
-        y: 0
-        width: 48
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 44
+        y: 4
+        width: 31
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89098939b956fba4daec48cb87615832
-      internalID: -894180710
+      spriteID: e500c55f6eba3ca4ea48395bc26c2dc4
+      internalID: -154413414
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_2
+      name: pikachu_jump_2
       rect:
         serializedVersion: 2
-        x: 99
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 76
+        y: 4
+        width: 37
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9a07838babd64124ca2f9bebb3ee548e
-      internalID: 1563362104
+      spriteID: 13b351c7def68ac4588ec95c831edde7
+      internalID: 190841321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_3
+      name: pikachu_jump_3
       rect:
         serializedVersion: 2
-        x: 147
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 116
+        y: 4
+        width: 31
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6bc9c869e03d4c41a53772739db56d1
-      internalID: 1211132869
+      spriteID: 98d1ab983f509634d9686dc00a3b4d67
+      internalID: -562229737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_4
+      name: pikachu_jump_4
       rect:
         serializedVersion: 2
-        x: 195
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 152
+        y: 4
+        width: 25
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d074afd3fc5c82344a19c290a9434bc8
-      internalID: 525422104
+      spriteID: 854a26804ddf0b745b745cf4ac63f76d
+      internalID: 2114816831
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_5
+      name: pikachu_jump_5
       rect:
         serializedVersion: 2
-        x: 243
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 183
+        y: 4
+        width: 32
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ec44c63885cacfa4d825ae44387bf9cf
-      internalID: -1513485284
+      spriteID: 09f1a1fa42d233e4d89545748f06b81c
+      internalID: -1039526611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_6
+      name: pikachu_jump_6
       rect:
         serializedVersion: 2
-        x: 291
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 220
+        y: 4
+        width: 29
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: af0ca1e639aa93c4db61c1fbb3222531
-      internalID: 17876843
+      spriteID: 709d9dd9520862b438a51da19aebabac
+      internalID: 1052083208
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_7
+      name: pikachu_jump_7
       rect:
         serializedVersion: 2
-        x: 339
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 253
+        y: 4
+        width: 44
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed45067d64fe60c48a909330c7aa85c2
-      internalID: -89366284
+      spriteID: e7b7095e8c12b6341ab931bdc9cd6bc9
+      internalID: 1344530199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_8
+      name: pikachu_jump_8
       rect:
         serializedVersion: 2
-        x: 387
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 301
+        y: 4
+        width: 46
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87aa69c8820f7a04eaf14dcc8afefa94
-      internalID: 816575214
+      spriteID: 2a6c73133f2f1524281b6daaee788c9d
+      internalID: -1971423323
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_9
+      name: pikachu_jump_9
       rect:
         serializedVersion: 2
-        x: 435
-        y: 0
-        width: 48
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 351
+        y: 4
+        width: 40
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74d3eac7d0f7e6e43b99ae852b42a95c
-      internalID: -1064372229
+      spriteID: 7c9e324a0f1fe8141b3710a6bcac7087
+      internalID: 1723583757
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_10
+      name: pikachu_jump_10
       rect:
         serializedVersion: 2
-        x: 483
-        y: 0
-        width: 48
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 399
+        y: 4
+        width: 29
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 02deb05c9257071438f7ebd50cc75d43
-      internalID: -538019394
+      spriteID: 6b0747e12ee41c04ea441ca38ca37c08
+      internalID: 1579878482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_11
+      name: pikachu_jump_11
       rect:
         serializedVersion: 2
-        x: 531
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 436
+        y: 4
+        width: 31
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 008d3987dafe38f42aade2b1b7063dc2
-      internalID: 918885652
+      spriteID: c6e5fa8a04e7b474a90d76c549fbee79
+      internalID: 2008392458
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_12
+      name: pikachu_jump_12
       rect:
         serializedVersion: 2
-        x: 579
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 473
+        y: 4
+        width: 30
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a392b7d1a303f284fb566ffad487dac8
-      internalID: -49621146
+      spriteID: aaa8e762534d75b4fa479d7d899c538a
+      internalID: 656145964
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Garchomp_idle_13
+      name: pikachu_jump_13
       rect:
         serializedVersion: 2
-        x: 627
-        y: 0
-        width: 48.07143
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 507
+        y: 4
+        width: 38
+        height: 66
+      alignment: 9
+      pivot: {x: 0.5, y: 0.3}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 958b7ab0112f05e4aa89e1b9eb192a87
-      internalID: 391973224
+      spriteID: 78f8bd457102fa84f91553a29809483a
+      internalID: -467787922
       vertices: []
       indices: 
       edges: []
@@ -409,20 +409,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Garchomp_idle_0: 679346635
-      Garchomp_idle_5: -1513485284
-      Garchomp_idle_7: -89366284
-      Garchomp_idle_9: -1064372229
-      Garchomp_idle_1: -894180710
-      Garchomp_idle_8: 816575214
-      Garchomp_idle_2: 1563362104
-      Garchomp_idle_4: 525422104
-      Garchomp_idle_13: 391973224
-      Garchomp_idle_10: -538019394
-      Garchomp_idle_6: 17876843
-      Garchomp_idle_3: 1211132869
-      Garchomp_idle_11: 918885652
-      Garchomp_idle_12: -49621146
+      pikachu_jump_2: 190841321
+      pikachu_jump_10: 1579878482
+      pikachu_jump_13: -467787922
+      pikachu_jump_1: -154413414
+      pikachu_jump_12: 656145964
+      pikachu_jump_5: -1039526611
+      pikachu_jump_7: 1344530199
+      pikachu_jump_4: 2114816831
+      pikachu_jump_6: 1052083208
+      pikachu_jump_3: -562229737
+      pikachu_jump_11: 2008392458
+      pikachu_jump_0: -1706410715
+      pikachu_jump_9: 1723583757
+      pikachu_jump_8: -1971423323
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

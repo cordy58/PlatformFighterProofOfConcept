@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 819fe19e5f74d7d4085730aee4e32af3
+guid: 418254d6ada315f4b9cdae013ba370ac
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -103,7 +103,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: pikachu_idle_wait2_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 19
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd7a013f502df447b3e651cb916c3cc
+      internalID: -1158081385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pikachu_idle_wait2_1
+      rect:
+        serializedVersion: 2
+        x: 84
+        y: 19
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b847e821f62a3494b9995b88829b0cd0
+      internalID: -1396124905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pikachu_idle_wait2_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 19
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9784b576eea50eb4590fb5fb274a9e67
+      internalID: 1527333728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pikachu_idle_wait2_3
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 19
+        width: 35
+        height: 39
+      alignment: 9
+      pivot: {x: 0.4557687, y: 0.4999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73c793aea536a514eb76e9f69efe72d7
+      internalID: -1898596114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pikachu_idle_wait2_4
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 19
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8680cde9ca9fb8649ab2864a31010e6e
+      internalID: 539738250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -114,7 +219,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pikachu_idle_wait2_3: -1898596114
+      pikachu_idle_wait2_1: -1396124905
+      pikachu_idle_wait2_4: 539738250
+      pikachu_idle_wait2_0: -1158081385
+      pikachu_idle_wait2_2: 1527333728
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
