@@ -6,15 +6,6 @@
             "id": "62512786-76e7-4d01-be63-df79281de7d4",
             "actions": [
                 {
-                    "name": "Walk",
-                    "type": "Value",
-                    "id": "a8cd0cc0-856d-4c17-8125-922f2ba30570",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Run",
                     "type": "Value",
                     "id": "27b06695-a979-4352-a797-000350828e3e",
@@ -43,39 +34,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "One Modifier",
-                    "id": "d76ee01e-fe9e-43de-9bfe-6afd316ef39d",
-                    "path": "OneModifier",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Walk",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "modifier",
-                    "id": "5d3743ff-82d4-47a5-86b0-bda22e674d18",
-                    "path": "<Gamepad>/leftShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Control Scheme",
-                    "action": "Walk",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "binding",
-                    "id": "b2c7677f-3273-438c-a90e-e8bc4b7cced5",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Xbox Control Scheme",
-                    "action": "Walk",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "",
                     "id": "75cbd5cc-cd47-44e2-a840-6800b3875029",
