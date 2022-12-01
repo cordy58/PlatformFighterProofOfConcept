@@ -101,7 +101,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1a190ecde3e1f44b34a8a619a6d8fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tempMoveSpeed: 6
+  castFilter:
+    useTriggers: 0
+    useLayerMask: 1
+    useDepth: 0
+    useOutsideDepth: 0
+    useNormalAngle: 0
+    useOutsideNormalAngle: 0
+    layerMask:
+      serializedVersion: 2
+      m_Bits: 64
+    minDepth: 0
+    maxDepth: 0
+    minNormalAngle: 0
+    maxNormalAngle: 0
+  runSpeed: 9
+  walkSpeed: 6
+  airSpeed: 7
+  airAcceleration: 0.5
+  fallSpeed: -5
+  gravity: -0.5
+  fastFallSpeed: 5
+  fastFallGravity: 5
+  jumpPower: 0
+  numJumps: 2
+  isMoving: 0
+  isGrounded: 1
 --- !u!50 &2836521150955064896
 Rigidbody2D:
   serializedVersion: 4
@@ -117,7 +142,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

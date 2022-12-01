@@ -37,7 +37,7 @@
                 {
                     "name": "",
                     "id": "75cbd5cc-cd47-44e2-a840-6800b3875029",
-                    "path": "<XInputController>/buttonWest",
+                    "path": "<XInputController>/buttonNorth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Xbox Control Scheme",
