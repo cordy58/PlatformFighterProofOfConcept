@@ -4,6 +4,7 @@ using System.ComponentModel.Design.Serialization;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 
 public class FighterController : MonoBehaviour {
     Vector2 inputMovementVector;
@@ -17,8 +18,8 @@ public class FighterController : MonoBehaviour {
     private const float FAST_FALL_SPEED = -15f;
     private const int MAX_GROUNDED_JUMPS = 2;
     private const int MAX_AIR_JUMPS = 1;
-    private const float FULL_HOP_POWER = 14f;
-    private const float SHORT_HOP_POWER = 8f;
+    private const float FULL_HOP_POWER = 13f;
+    private const float SHORT_HOP_POWER = 11f;
     private int numJumps = 2;
     private float jumpPower;
     private bool fastFall = false;
@@ -26,6 +27,7 @@ public class FighterController : MonoBehaviour {
     private const float JUMP_RISE_TIME_NO_ADDED_GRAV = 0.2f;
     private const float SHORT_HOP_RISE_TIME_NO_ADDED_GRAV = 0.08f;
     private const float GRAVITY_INCREASE = 1f;
+    private const float GROUNDED_MOVEMENT_STOP = 0.5f;
 
     //animation states
     Animator animator;
@@ -38,6 +40,7 @@ public class FighterController : MonoBehaviour {
     private const string FALL = "pikachu_fall";
     private const string JUMP_SQUAT = "pikachu_jumpSquat";
     private const string RISE = "pikachu_rise";
+    private const string SKID = "pikachu_skid";
 
 
     private enum Direction { right, left };
@@ -56,6 +59,7 @@ public class FighterController : MonoBehaviour {
     }
     [SerializeField] private bool isMoving = false;
     [SerializeField] private bool isGrounded = true;
+    private bool isRunning = false;
     private bool isJump = false;
     private float idleTime = 0f;
     private CapsuleCollider2D baseCollider;
@@ -87,6 +91,7 @@ public class FighterController : MonoBehaviour {
 
     public void OnFullHop(InputAction.CallbackContext context) {
         if (context.performed) {
+            if (!IsGrounded() && numJumps == MAX_GROUNDED_JUMPS) numJumps = MAX_AIR_JUMPS;
             if (numJumps > 0) {
                 isJump = true;
                 fastFall = false;
@@ -99,6 +104,7 @@ public class FighterController : MonoBehaviour {
 
     public void OnShortHop(InputAction.CallbackContext context) {
         if (context.performed) {
+            if (!IsGrounded() && numJumps == MAX_GROUNDED_JUMPS) numJumps = MAX_AIR_JUMPS;
             if (numJumps > 0) {
                 isJump = true;
                 fastFall = false;
@@ -113,33 +119,46 @@ public class FighterController : MonoBehaviour {
         if (IsGrounded() && !isJump) {
             GroundedMovement();
         } else {
-            //TODO: finish air movement
             AirMovement();
         }
     }
 
     private void GroundedMovement() {
-        //TODO: Fix sliding
         numJumps = MAX_GROUNDED_JUMPS; //reset number of jumps
         fastFall = false; //make sure next time we go airborne we don't fast fall
         isMoving = inputMovementVector.x != 0;
         jumpRiseTime = 0f;
         if (isMoving) {
             idleTime = 0f;
-            if (Mathf.Abs(inputMovementVector.x) < 0.9) {
+            if (Mathf.Abs(inputMovementVector.x) < 0.9 && !isRunning) {
                 //fighter is walking
                 rb.velocity = new Vector2(inputMovementVector.x * WALK_SPEED, 0);
                 ChangeAnimationState(WALK);
             } else {
-                //fighter is running
+                //Fighter is either running or skidding
                 //make sure that there is only one running speed i.e. inputMovementVector.x * groundedMoveSpeed
                 if (inputMovementVector.x > 0) inputMovementVector.x = 1;
                 else inputMovementVector.x = -1;
-                rb.velocity = new Vector2(inputMovementVector.x * RUN_SPEED, 0); //the character is on the ground so velocity.y = 0
-                ChangeAnimationState(RUN);
+
+                if (((inputMovementVector.x == 1 && rb.velocity.x < 0) || (inputMovementVector.x == -1 && rb.velocity.x > 0)) && isRunning) { 
+                    float skid = Mathf.MoveTowards(rb.velocity.x, 0, GROUNDED_MOVEMENT_STOP);
+                    rb.velocity = new Vector2(skid, 0);
+                    ChangeAnimationState(SKID);
+                } else {
+                    //fighter is running
+                    isRunning = true; //set here instead of first else because we want the above if-statement to be able to evaluate based on whether this is true
+                    rb.velocity = new Vector2(inputMovementVector.x * RUN_SPEED, 0); //the character is on the ground so velocity.y = 0
+                    ChangeAnimationState(RUN);
+                }
             }
             SetSpriteDirection();
         } else {
+            isRunning = false;
+            //stop sliding
+            float newXValue = Mathf.MoveTowards(rb.velocity.x, 0, GROUNDED_MOVEMENT_STOP);
+            rb.velocity = new Vector2(newXValue, 0);
+            SetSpriteDirection();
+            //cycle through idle animations
             if (idleTime < 3f) {
                 if (!IsAnimationPlaying(animator, IDLE_WAIT_1) && !IsAnimationPlaying(animator, IDLE_WAIT_2)) {
                     ChangeAnimationState(IDLE);
