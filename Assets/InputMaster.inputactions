@@ -61,7 +61,7 @@
                     "id": "7f6eef79-b8ff-4ea2-9eac-55b312013297",
                     "path": "<XInputController>/leftStick",
                     "interactions": "",
-                    "processors": "",
+                    "processors": "StickDeadzone",
                     "groups": "Xbox Control Scheme",
                     "action": "Run",
                     "isComposite": false,
