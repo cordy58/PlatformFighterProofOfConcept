@@ -10,6 +10,8 @@ public class FighterController : MonoBehaviour {
     Vector2 inputMovementVector;
     Rigidbody2D rb;
     public ContactFilter2D castFilter;
+    public EdgeDetection frontEdgeDetector;
+    public EdgeDetection rearEdgeDetector;
     private const float RUN_SPEED = 9f;
     private const float WALK_SPEED = 6f;
     private const float MAX_AIR_SPEED = 5f;
@@ -27,7 +29,8 @@ public class FighterController : MonoBehaviour {
     private const float JUMP_RISE_TIME_NO_ADDED_GRAV = 0.2f;
     private const float SHORT_HOP_RISE_TIME_NO_ADDED_GRAV = 0.08f;
     private const float GRAVITY_INCREASE = 1f;
-    private const float GROUNDED_MOVEMENT_STOP = 0.5f;
+    private const float GROUNDED_MOVEMENT_STOP = 0.8f;
+    private const float ROLL_SPEED = 8f;
 
     //animation states
     Animator animator;
@@ -41,6 +44,7 @@ public class FighterController : MonoBehaviour {
     private const string JUMP_SQUAT = "pikachu_jumpSquat";
     private const string RISE = "pikachu_rise";
     private const string SKID = "pikachu_skid";
+    private const string ROLL = "pikachu_roll";
 
 
     private enum Direction { right, left };
@@ -57,12 +61,18 @@ public class FighterController : MonoBehaviour {
             _spriteDirection = value;
         }
     }
+    private Direction RollDirection = Direction.right;
+
     [SerializeField] private bool isMoving = false;
     [SerializeField] private bool isGrounded = true;
     private bool isRunning = false;
     private bool isJump = false;
     private float idleTime = 0f;
+    private float dodgeTimer = 0f;
     private CapsuleCollider2D baseCollider;
+    
+
+    private bool isActionLocked = false;
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -76,6 +86,13 @@ public class FighterController : MonoBehaviour {
     }
 
     private void FixedUpdate() {
+        if (dodgeTimer > 0) {
+            dodgeTimer = (dodgeTimer - Time.deltaTime) >= 0 ? dodgeTimer - Time.deltaTime : 0;
+        }
+        if (IsAnimationPlaying(animator, ROLL) && (frontEdgeDetector.colliders.Count == 0 || rearEdgeDetector.colliders.Count == 0)) {
+            //stop rolling movement so fighter doesn't fall off edge
+            rb.velocity = new Vector2(0, 0);
+        }
         MoveFighter();
     }
 
@@ -115,11 +132,35 @@ public class FighterController : MonoBehaviour {
         }
     }
 
-    private void MoveFighter() {  
-        if (IsGrounded() && !isJump) {
-            GroundedMovement();
-        } else {
-            AirMovement();
+    public void OnDodge(InputAction.CallbackContext context) {
+        if (context.performed) {
+            Vector2 dodgeInput = context.ReadValue<Vector2>();
+            if (IsGrounded() && dodgeTimer == 0) {
+                //has to be spot dodge or roll
+                dodgeTimer = 1f;
+                if (Mathf.Abs(dodgeInput.x) > 0.5) {
+                    //we rolling
+                    isActionLocked = true; //you're comitted to the roll
+                    ChangeAnimationState(ROLL);
+                    if (dodgeInput.x > 0) RollDirection = Direction.right;
+                    else RollDirection = Direction.left;
+                } else if (dodgeInput.y > 0.7) {
+                    //TODO: it's a spot dodge
+                    Debug.Log("is spot dodge");
+                }
+            } else {
+                //TODO: has to be some sort of air dodge
+            }
+        }
+    }
+
+    private void MoveFighter() {
+        if (!isActionLocked) {
+            if (IsGrounded() && !isJump) {
+                GroundedMovement();
+            } else {
+                AirMovement();
+            }
         }
     }
 
@@ -230,6 +271,22 @@ public class FighterController : MonoBehaviour {
         else newYVelocity = (rb.velocity.y - yVelocityRiseModifier) >= 0 ? rb.velocity.y - yVelocityRiseModifier : 0;
 
         rb.velocity = new Vector2(newXVelocity, newYVelocity);
+    }
+
+    private void Rolling() {
+        //Each time rolling is called, move a certain amount. 
+        if (IsGrounded()) {
+            if (RollDirection == Direction.right) rb.velocity = new Vector2(ROLL_SPEED, 0);
+            else rb.velocity = new Vector2(-ROLL_SPEED, 0);
+        } else {
+
+        }
+        
+    }
+
+    private void StopRolling() {
+        isActionLocked = false;
+        rb.velocity = new Vector2(0, 0);
     }
 
     //start playing a new animation
