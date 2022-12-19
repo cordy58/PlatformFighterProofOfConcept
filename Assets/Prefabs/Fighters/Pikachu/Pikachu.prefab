@@ -10,11 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 6500204853061783830}
   - component: {fileID: 8236062009338989323}
-  - component: {fileID: 8012617539793618087}
   - component: {fileID: 2836521150955064896}
   - component: {fileID: 1459898831839651383}
   - component: {fileID: 7877755339756558978}
+  - component: {fileID: 3967099962134338132}
   - component: {fileID: 2434620456064969638}
+  - component: {fileID: 240811664411536005}
+  - component: {fileID: 6439936665540505381}
   m_Layer: 0
   m_Name: Pikachu
   m_TagString: Untagged
@@ -90,36 +92,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8012617539793618087
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3441301150848595590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e1a190ecde3e1f44b34a8a619a6d8fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  castFilter:
-    useTriggers: 0
-    useLayerMask: 1
-    useDepth: 0
-    useOutsideDepth: 0
-    useNormalAngle: 0
-    useOutsideNormalAngle: 0
-    layerMask:
-      serializedVersion: 2
-      m_Bits: 64
-    minDepth: 0
-    maxDepth: 0
-    minNormalAngle: 0
-    maxNormalAngle: 0
-  frontEdgeDetector: {fileID: 2180945720066644248}
-  rearEdgeDetector: {fileID: 8792842558409538734}
-  isMoving: 0
-  isGrounded: 1
 --- !u!50 &2836521150955064896
 Rigidbody2D:
   serializedVersion: 4
@@ -154,9 +126,9 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.2399509, y: -0.1599673}
-  m_Size: {x: 1.3224664, y: 1.7732832}
-  m_Direction: 0
+  m_Offset: {x: 0.3, y: -0.87}
+  m_Size: {x: 1.4003536, y: 0.4170342}
+  m_Direction: 1
 --- !u!95 &7877755339756558978
 Animator:
   serializedVersion: 4
@@ -177,6 +149,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &3967099962134338132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441301150848595590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4d18b5fcd5fa2488ae8cef8897dd81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &2434620456064969638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,8 +188,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8012617539793618087}
-        m_TargetAssemblyTypeName: FighterController, Assembly-CSharp
+      - m_Target: {fileID: 3967099962134338132}
+        m_TargetAssemblyTypeName: FighterMovementController, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -220,8 +204,8 @@ MonoBehaviour:
     m_ActionName: Battle/Run
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8012617539793618087}
-        m_TargetAssemblyTypeName: FighterController, Assembly-CSharp
+      - m_Target: {fileID: 3967099962134338132}
+        m_TargetAssemblyTypeName: FighterMovementController, Assembly-CSharp
         m_MethodName: OnFullHop
         m_Mode: 0
         m_Arguments:
@@ -236,8 +220,8 @@ MonoBehaviour:
     m_ActionName: Battle/Full Hop
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8012617539793618087}
-        m_TargetAssemblyTypeName: FighterController, Assembly-CSharp
+      - m_Target: {fileID: 3967099962134338132}
+        m_TargetAssemblyTypeName: FighterMovementController, Assembly-CSharp
         m_MethodName: OnShortHop
         m_Mode: 0
         m_Arguments:
@@ -259,6 +243,30 @@ MonoBehaviour:
   m_DefaultActionMap: Battle
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &240811664411536005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441301150848595590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2973fb13f54424542a849e5e37c42f5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6439936665540505381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3441301150848595590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baddf38a1d041fd4bacb5938eb4d6bda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5176423487048527189
 GameObject:
   m_ObjectHideFlags: 0

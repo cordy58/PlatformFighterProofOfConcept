@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.Design.Serialization;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -31,6 +32,7 @@ public class FighterController : MonoBehaviour {
     private const float GRAVITY_INCREASE = 1f;
     private const float GROUNDED_MOVEMENT_STOP = 0.8f;
     private const float ROLL_SPEED = 8f;
+    private const float AIR_DODGE_SCALAR = 6f;
 
     //animation states
     Animator animator;
@@ -45,6 +47,8 @@ public class FighterController : MonoBehaviour {
     private const string RISE = "pikachu_rise";
     private const string SKID = "pikachu_skid";
     private const string ROLL = "pikachu_roll";
+    private const string SPOT_DODGE = "pikachu_spotDodge";
+    private const string AIR_DODGE = "pikachu_airDodge";
 
 
     private enum Direction { right, left };
@@ -93,6 +97,12 @@ public class FighterController : MonoBehaviour {
             //stop rolling movement so fighter doesn't fall off edge
             rb.velocity = new Vector2(0, 0);
         }
+        /*if (IsAnimationPlaying(animator, AIR_DODGE) && IsGrounded()) {
+            isActionLocked = false;
+            ChangeAnimationState(IDLE);
+            //redirect movement into the x
+            rb.velocity = new Vector2(9, 0);
+        }*/
         MoveFighter();
     }
 
@@ -107,51 +117,65 @@ public class FighterController : MonoBehaviour {
     }
 
     public void OnFullHop(InputAction.CallbackContext context) {
-        if (context.performed) {
-            if (!IsGrounded() && numJumps == MAX_GROUNDED_JUMPS) numJumps = MAX_AIR_JUMPS;
-            if (numJumps > 0) {
-                isJump = true;
-                fastFall = false;
-                numJumps--;
-                jumpPower = FULL_HOP_POWER;
-                ChangeAnimationState(JUMP_SQUAT);
+        if (!isActionLocked) {
+            if (context.performed) {
+                if (!IsGrounded() && numJumps == MAX_GROUNDED_JUMPS) numJumps = MAX_AIR_JUMPS;
+                if (numJumps > 0) {
+                    isJump = true;
+                    fastFall = false;
+                    numJumps--;
+                    jumpPower = FULL_HOP_POWER;
+                    ChangeAnimationState(JUMP_SQUAT);
+                }
             }
         }
     }
 
     public void OnShortHop(InputAction.CallbackContext context) {
-        if (context.performed) {
-            if (!IsGrounded() && numJumps == MAX_GROUNDED_JUMPS) numJumps = MAX_AIR_JUMPS;
-            if (numJumps > 0) {
-                isJump = true;
-                fastFall = false;
-                numJumps--;
-                jumpPower = SHORT_HOP_POWER;
-                ChangeAnimationState(JUMP_SQUAT);
+        if (!isActionLocked) {
+            if (context.performed) {
+                if (!IsGrounded() && numJumps == MAX_GROUNDED_JUMPS) numJumps = MAX_AIR_JUMPS;
+                if (numJumps > 0) {
+                    isJump = true;
+                    fastFall = false;
+                    numJumps--;
+                    jumpPower = SHORT_HOP_POWER;
+                    ChangeAnimationState(JUMP_SQUAT);
+                }
             }
         }
     }
 
     public void OnDodge(InputAction.CallbackContext context) {
-        if (context.performed) {
-            Vector2 dodgeInput = context.ReadValue<Vector2>();
-            if (IsGrounded() && dodgeTimer == 0) {
-                //has to be spot dodge or roll
-                dodgeTimer = 1f;
-                if (Mathf.Abs(dodgeInput.x) > 0.5) {
-                    //we rolling
-                    isActionLocked = true; //you're comitted to the roll
-                    ChangeAnimationState(ROLL);
-                    if (dodgeInput.x > 0) RollDirection = Direction.right;
-                    else RollDirection = Direction.left;
-                } else if (dodgeInput.y > 0.7) {
-                    //TODO: it's a spot dodge
-                    Debug.Log("is spot dodge");
+        if (!isActionLocked) {
+            if (context.performed) {
+                Vector2 dodgeInput = context.ReadValue<Vector2>();
+                Debug.Log(dodgeInput);
+                if (IsGrounded() && dodgeTimer == 0) {
+                    //has to be spot dodge or roll
+                    dodgeTimer = 1f;
+                    if (Mathf.Abs(dodgeInput.x) > 0.5) {
+                        //rolling
+                        isActionLocked = true; //you're comitted to the roll
+                        ChangeAnimationState(ROLL);
+                        if (dodgeInput.x > 0) RollDirection = Direction.right;
+                        else RollDirection = Direction.left;
+                    } else if (dodgeInput.y < -0.6) {
+                        //spot dodge
+                        isActionLocked = true;
+                        rb.velocity = new Vector2(0, 0);
+                        ChangeAnimationState(SPOT_DODGE);
+                    }
+                } else {
+                    //TODO: air dodge
+                    //Skipping neutral air dodges for now, we'll do that when we do shield
+                    //read the inputVector, multiply by the Vector and move accordingly
+                    isActionLocked = true;
+                    rb.velocity = new Vector2(dodgeInput.x * AIR_DODGE_SCALAR, dodgeInput.y * AIR_DODGE_SCALAR);
+                    ChangeAnimationState(AIR_DODGE);
                 }
-            } else {
-                //TODO: has to be some sort of air dodge
             }
-        }
+        } 
     }
 
     private void MoveFighter() {
@@ -194,23 +218,28 @@ public class FighterController : MonoBehaviour {
             }
             SetSpriteDirection();
         } else {
-            isRunning = false;
-            //stop sliding
-            float newXValue = Mathf.MoveTowards(rb.velocity.x, 0, GROUNDED_MOVEMENT_STOP);
-            rb.velocity = new Vector2(newXValue, 0);
-            SetSpriteDirection();
-            //cycle through idle animations
-            if (idleTime < 3f) {
-                if (!IsAnimationPlaying(animator, IDLE_WAIT_1) && !IsAnimationPlaying(animator, IDLE_WAIT_2)) {
-                    ChangeAnimationState(IDLE);
-                    idleTime += Time.deltaTime;
-                }
+            if (IsAnimationPlaying(animator, AIR_DODGE)) {
+                //wavedash testing. This is very much not what's supposed to happen
+                rb.velocity = new Vector2(20, 0);
             } else {
-                if (!IsAnimationPlaying(animator, IDLE_WAIT_1) && !IsAnimationPlaying(animator, IDLE_WAIT_2)) {
-                    int picker = Random.Range(1, 3);
-                    if (picker == 1) ChangeAnimationState(IDLE_WAIT_1);
-                    else ChangeAnimationState(IDLE_WAIT_2);
-                    idleTime = 0f;
+                isRunning = false;
+                //stop sliding
+                float newXValue = Mathf.MoveTowards(rb.velocity.x, 0, GROUNDED_MOVEMENT_STOP);
+                rb.velocity = new Vector2(newXValue, 0);
+                SetSpriteDirection();
+                //cycle through idle animations
+                if (idleTime < 3f) {
+                    if (!IsAnimationPlaying(animator, IDLE_WAIT_1) && !IsAnimationPlaying(animator, IDLE_WAIT_2)) {
+                        ChangeAnimationState(IDLE);
+                        idleTime += Time.deltaTime;
+                    }
+                } else {
+                    if (!IsAnimationPlaying(animator, IDLE_WAIT_1) && !IsAnimationPlaying(animator, IDLE_WAIT_2)) {
+                        int picker = Random.Range(1, 3);
+                        if (picker == 1) ChangeAnimationState(IDLE_WAIT_1);
+                        else ChangeAnimationState(IDLE_WAIT_2);
+                        idleTime = 0f;
+                    }
                 }
             }
         }
@@ -274,19 +303,34 @@ public class FighterController : MonoBehaviour {
     }
 
     private void Rolling() {
-        //Each time rolling is called, move a certain amount. 
-        if (IsGrounded()) {
-            if (RollDirection == Direction.right) rb.velocity = new Vector2(ROLL_SPEED, 0);
-            else rb.velocity = new Vector2(-ROLL_SPEED, 0);
-        } else {
-
-        }
-        
+        //TODO: invincibility
+        //Each time rolling is called, move a certain amount.
+        if (RollDirection == Direction.right) rb.velocity = new Vector2(ROLL_SPEED, 0);
+        else rb.velocity = new Vector2(-ROLL_SPEED, 0);
     }
 
     private void StopRolling() {
         isActionLocked = false;
         rb.velocity = new Vector2(0, 0);
+    }
+
+    private void SpotDodging() {
+        //we lock further inputs here.
+        //TODO: invincibility
+        
+    }
+
+    private void StopSpotDodging() {
+        //unlock action again
+        isActionLocked = false;
+    }
+
+    private void AirDodging() {
+
+    }
+
+    private void StopAirDodging() {
+        isActionLocked = false;
     }
 
     //start playing a new animation
