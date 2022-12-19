@@ -123,17 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &212515450 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8012617539793618087, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-  m_PrefabInstance: {fileID: 6907572477166279980}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e1a190ecde3e1f44b34a8a619a6d8fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &338117720
 GameObject:
   m_ObjectHideFlags: 0
@@ -447,18 +436,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &633939965 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5709638373372883948, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
+--- !u!114 &633939967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2180945720066644248, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
   m_PrefabInstance: {fileID: 6907572477166279980}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &633939967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 633939965}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e16ef39827eedeb468ec81e64fcb8952, type: 3}
@@ -787,37 +770,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 212515450}
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OnDodge
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: FighterController, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 2434620456064969638, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
-      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 3441301150848595590, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
       propertyPath: m_Name
       value: Pikachu
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709638373372883948, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
+      propertyPath: m_Name
+      value: FrontEdgeDetectionCollider
       objectReference: {fileID: 0}
     - target: {fileID: 6500204853061783830, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
       propertyPath: m_RootOrder
@@ -867,6 +826,10 @@ PrefabInstance:
       propertyPath: gravity
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 8012617539793618087, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
+      propertyPath: edgeDetector
+      value: 
+      objectReference: {fileID: 633939967}
     - target: {fileID: 8236062009338989323, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
       propertyPath: m_Size.x
       value: 2.625
@@ -879,5 +842,7 @@ PrefabInstance:
       propertyPath: m_WasSpriteAssigned
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 83300102926897253, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
+    - {fileID: 7317318174677753710, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 63c8fc6c3c411c342814b8ce00a67e74, type: 3}

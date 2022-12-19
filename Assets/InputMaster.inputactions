@@ -6,7 +6,7 @@
             "id": "62512786-76e7-4d01-be63-df79281de7d4",
             "actions": [
                 {
-                    "name": "Run",
+                    "name": "Move",
                     "type": "Value",
                     "id": "27b06695-a979-4352-a797-000350828e3e",
                     "expectedControlType": "Vector2",
@@ -72,7 +72,7 @@
                     "interactions": "",
                     "processors": "StickDeadzone",
                     "groups": "Xbox Control Scheme",
-                    "action": "Run",
+                    "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
